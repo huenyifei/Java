@@ -19,9 +19,15 @@ public class Main {
          */
         Employee[] staff = new Employee[3];
         Manager boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+        //子类复制给超类，允许
         staff[0] = boss;
         staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
         staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+
+
+
+//        //超类赋值给之类，强制转换也不行
+//        Manager boss2 = (Manager) staff[1];
 
 //        ///////////////////////////错误的复制，扰乱了存储空间///////////////////////////
 //        Manager[] managers = new Manager[1];
@@ -44,6 +50,18 @@ public class Main {
         for(Employee e:staff){
             System.out.println(e.getName()+":"+e.getSalary());
         }
+
+
+        boss.setLike("fighting");
+        System.out.println(boss.getLike());
+        System.out.println(boss.getLike(0));
+        System.out.println(boss.getLike(1));
+
+
+        boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+        Employee emp = new Employee("Carl Cracker", 80000, 1987, 12, 15);
+        System.out.println(boss.equals(emp));
+        System.out.println(emp.equals(boss));
 
     }
 }
