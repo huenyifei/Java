@@ -1,6 +1,16 @@
 package com.company;
 
+enum Size{SMALL, MEDIUM, LARGE, EXTRA_LARGE};
+
 public class Main {
+
+    public static int max(int...args){
+        int result = 0;
+        for(int a:args){
+            if(a>result) result=a;
+        };
+        return result;
+    }
 
     public static void main(String[] args) {
 //        /*
@@ -19,7 +29,7 @@ public class Main {
          */
         Employee[] staff = new Employee[3];
         Manager boss = new Manager("Carl Cracker", 80000, 1987, 12, 15);
-        //子类复制给超类，允许
+        //子类赋值给超类，允许
         staff[0] = boss;
         staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
         staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
@@ -38,7 +48,9 @@ public class Main {
 
         boss.setBonus(5000);                    //ok
         ((Manager)staff[0]).setBonus(5000);     //ok
+//        //需要强制转换
 //        staff[0].setBonus(5000);                //worry
+//        //原本不是Manager类强转也不行
 //        ((Manager)staff[1]).setBonus(5000);     //worry
 
         for (Employee e : staff)
@@ -62,6 +74,15 @@ public class Main {
         Employee emp = new Employee("Carl Cracker", 80000, 1987, 12, 15);
         System.out.println(boss.equals(emp));
         System.out.println(emp.equals(boss));
+
+        //可变参练习
+        int[] arr = new int[3];
+        arr[0] = 110;
+        arr[1] = 100;
+        arr[2] = 101;
+        System.out.println(max(arr));
+
+        System.out.println(Size.LARGE.ordinal());
 
     }
 }
